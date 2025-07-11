@@ -20,7 +20,7 @@ exports.chatWithBot = async (req, res) => {
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:5000',  // Required by OpenRouter
+        'HTTP-Referer': 'https://chatbot-backend-fv1d.onrender.com',  // Required by OpenRouter
         'X-Title': 'ChatBot App'                 // Optional but good to include
       }
     });
