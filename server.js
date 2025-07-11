@@ -6,16 +6,32 @@ require('dotenv').config();
 const chatRoutes = require('./routes/chatRoutes');
 
 const app = express();
-app.use(cors());
+
+// ✅ Correct CORS setup
+const allowedOrigin = 'https://chatbot-frontend-two-ochre.vercel.app';
+
+app.use(cors({
+  origin: allowedOrigin,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
+
+// ✅ Optional: respond to preflight requests explicitly
+app.options('*', cors());
+
+// ✅ JSON body parser
 app.use(express.json());
 
-// ✅ Updated MongoDB connection (no deprecated options)
+// ✅ MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+// ✅ Routes
 app.use('/api/chat', chatRoutes);
 
+// ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
