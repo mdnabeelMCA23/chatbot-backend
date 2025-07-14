@@ -10,18 +10,18 @@ exports.chatWithBot = async (req, res) => {
   }
 
   console.log("Sending message to OpenRouter:", message);
-  console.log("API Key Loaded:", process.env.OPENAI_API_KEY?.slice(0, 5) + '...');
+  console.log("API Key Loaded:", process.env.OPENROUTER_API_KEY?.slice(0, 5) + '...');
 
   try {
     const botResponse = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-      model: "deepseek/deepseek-r1:free", // or another model you have access to
+      model: "deepseek/deepseek-r1:free",
       messages: [{ role: "user", content: message }]
     }, {
       headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:5000',  // Required by OpenRouter
-        'X-Title': 'ChatBot App'                 // Optional but good to include
+        'HTTP-Referer': 'http://localhost:5000',
+        'X-Title': 'ChatBot App'
       }
     });
 
