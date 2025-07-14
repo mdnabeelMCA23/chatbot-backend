@@ -20,7 +20,7 @@ exports.chatWithBot = async (req, res) => {
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:5000',
+        'HTTP-Referer': 'https://chatbot-frontend-tan-gamma.vercel.app',
         'X-Title': 'ChatBot App'
       }
     });
