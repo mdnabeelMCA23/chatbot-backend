@@ -14,7 +14,7 @@ exports.chatWithBot = async (req, res) => {
 
   try {
     const botResponse = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-      model: "nvidia/nemotron-nano-12b-v2-vl:free",
+      model: "x-ai/grok-4.1-fast:free",
       messages: [{ role: "user", content: message }]
     }, {
       headers: {
